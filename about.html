@@ -2,31 +2,23 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <title>about me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #000000;
-      color: #ffffff; /* Added for better readability on dark background */
-      font-family: 'Roboto Mono', monospace;
-    }
-    
     .image-container {
       display: flex;
       justify-content: center; /* Center the items horizontally */
       align-items: center; /* Center items vertically */
-      margin: 20px 0; /* Optional: Adds space around the image container */
     }
     
     .column {
       display: flex;
       flex-direction: column; /* Stack images vertically */
       align-items: center; /* Center items horizontally within column */
-      margin-right: 20px; /* Optional: Adds space between the column and standup image */
     }
 
     .ruck, .standup, .sail {
@@ -40,58 +32,105 @@
     .standup {
       align-self: center; /* Center the standup image vertically in the row */
     }
-
-    pre {
-      color: gray;
-    }
   </style>
 </head>
 
-<body>
-  <div>
+<body bgcolor=#000000>
+      <div>
     <pre>
 <a href="https://jack-schwab.github.io/PS70-main/">back to home</a> 
     </pre>
   </div>
 
   <div>
-    <pre># info</pre>
-    <pre># ---------------------------------</pre>
-    <pre>name               Jack Schwab</pre>
-    <pre>pronouns           he/him/his</pre>
-    <pre>hometown           Honolulu, Hawaii</pre>
-    <pre>year               2025</pre>
-    <pre>concentration      computer science</pre>
-    <pre>house              Mather</pre>
+    <pre style="color:gray">
+# info
+    </pre>
+    <pre style="color:gray">
+# ---------------------------------
+    </pre>
+    <pre>
+name               Jack Schwab
+    </pre>
+    <pre>
+pronouns           he/him/his
+    </pre>
+    <pre>
+hometown           Honolulu, Hawaii
+    </pre>
+    <pre>
+year               2025
+    </pre>
+    <pre>
+concentration      computer science
+    </pre>
+    <pre>
+house              Mather
+    </pre>
   </div>
+ 
 
-  <div>
-    <pre># bio</pre>
-    <pre># ---------------------------------</pre>
-    <p>I love comedy, music, sports, traveling, and [community] service.</p>
-    <p>On campus, I am a member of Army ROTC, Engineers Without Borders, WHRB, The Harvard Lampoon, and a former Varsity sailor.</p>
-  </div>
+    <div>
+    <pre style="color:gray">
+# bio
+    </pre>
+    <pre style="color:gray">
+# ---------------------------------
+  </pre>
+    <p>
+    I love comedy, music, sports, traveling, and [community] service.
+    </p>
 
-  <div>
-    <pre># gallery</pre>
-    <pre># ---------------------------------</pre>
-    <div class="image-container">
-      <div class="column">
-        <img src="images/ruck.png" class="ruck" alt="Ruck Image">
-        <img src="images/sail.jpeg" class="sail" alt="Sail Image">
-      </div>
-      <img src="images/standup.png" class="standup" alt="Standup Image">
+    <p>
+    On campus, I am a member of Army ROTC, Engineers Without Borders, WHRB, The Harvard Lampoon, and a former Varsity sailor.
+    </p>
     </div>
+
+    <div>
+      <pre style="color:gray">
+# gallery
+      </pre>
+      <pre style="color:gray">
+# ---------------------------------
+    </pre>
+    <p>
+
+      <div class="image-container">
+        <div class="column">
+  <img src="images/ruck.png" class="ruck" alt="Ruck Image">
+  <img src="images/sail.jpeg" class="sail" alt="Sail Image">
+        </div>
+        <img src="images/standup.png" class="standup" alt="Standup Image">
+      </div>
+      
+      <div>
+        <pre style="color:gray">
+      # inspo
+        </pre>
+        <pre style="color:gray">
+      # ---------------------------------
+        </pre>
+      </div>
+      
+    </p>
+
+
+    <div>
+    <pre style="color:gray">
+# inspo
+    </pre>
+    <pre style="color:gray">
+# ---------------------------------
+  </pre>
+    <p>
+This web-design was adopted by that of <a href="https://manas-kulkarnii.github.io/PS70/">manas kulkarni</a>.  Here's what he had to say:
+<p>
+"this website is largely adapted from the ps70 documentation website created by <a href="https://ingenuitive.github.io/PHYSCI-70/">kalos chu</a>. additionally, it draws inspiration from <a href="http://www.paulgraham.com">paul graham</a>'s personal website. when asked why he wastes screen space by making the text on his site so narrow, he answers, 'the aim of web design is not to use all available screen space. it is legibility. text is most legible with no more than 70 characters per line.'"
+</p>
+  
   </div>
 
-  <div>
-    <pre># inspo</pre>
-    <pre># ---------------------------------</pre>
-    <p>This web-design was adopted by that of <a href="https://manas-kulkarnii.github.io/PS70/">manas kulkarni</a>. Here's what he had to say:</p>
-    <p>"This website is largely adapted from the PS70 documentation website created by <a href="https://ingenuitive.github.io/PHYSCI-70/">kalos chu</a>. Additionally, it draws inspiration from <a href="http://www.paulgraham.com">Paul Graham</a>'s personal website. When asked why he wastes screen space by making the text on his site so narrow, he answers, 'The aim of web design is not to use all available screen space. It is legibility. Text is most legible with no more than 70 characters per line.'"</p>
-  </div>
-
-  <link rel="stylesheet" href="style.css">
 </body>
+<link rel="stylesheet" href="style.css">
 
 </html>
