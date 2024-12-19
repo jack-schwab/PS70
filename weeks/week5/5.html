@@ -12,7 +12,7 @@
   
     <div>
     <pre>
-<a href="https://manas-kulkarnii.github.io/PS70/">back to home</a> 
+<a href="https://jack-schwab.github.io/PS70/">back to home</a>
     </pre>
   </div>
 
@@ -26,27 +26,39 @@
   
   <div>
     <pre style="color:gray">
-# first attempt at 3d printing
+# 3D design
     </pre>
     <pre style="color:gray">
 # ---------------------------------
   </pre>
 
 <p>
-i have never tried 3d printing before. so as a first attempt, i decided to find a readymade stl design on <a href="https://www.thingiverse.com">thingiverse</a> and try printing it on the prusa printer in the lab. my favorite animals are bears and so i found a design of a brown bear (ursus arctos). <a download href='BrownBear.stl'>here</a> is the stl file i used. i imported the design into prusaslicer and then scaled it down so it wouldn't take too long to print. 
-
+This week was a clear opportunity to make some progress on my final project.  Despite that, I did not use this week to make any progress on my final project.  Instead, I waited 10 weeks to 3D model and print parts for my final project.
 </p>
 
 <p>
-<img src="bear_on_prusa.png" width="500" alt="design of bear on prusaslicer">
+My final project had two main 3D printed parts.  The <a download href="/weeks/week5/lesscrudeenclosure.stl">component housing</a>
 </p>
 
 <p>
-despite scaling the design down, the printing time was still extremely long. so i set the resolution at 0.20mm and was able to get the printing time down to 14 minutes. i exported the <a download href='BrownBear_gcode.gcode'>g-code</a> to a flash drive, plugged it into the prusa printer and started the print. and here is what the print looked like! 
+<img src="housing.png" width="500" alt="housing in fusion">
 </p>
 
 <p>
-<img src="bear_printed_out.png" width="500" alt="3d print of bear">
+and <a download href="/weeks/week5/motor_crank_arm.stl">DC Motor crank</a>.
+</p>
+
+<p>
+<img src="crank.png" width="500" alt="crank in prusa">
+</p>
+
+<p>
+The housing is very simple, or, as Nathan would say, "crude."  It is a handheld circular case with a hole cutout to attach the crank arm to the motor and another hole cutout to connect the power to the ESP32.
+The crank arm is also simple.  I hand screwed a cap onto the free-end of the crank so that you can grip the cap and rotate the crank with ease (like a fishing reel).
+</p>
+
+<p>
+The G-code files can be found <a download href="/weeks/week5/enclosuregcode.gcode">here for the enclosure</a> and <a download href="/weeks/week5/crankgcode.gcode">here for the motor crank</a>.
 </p>
 
 
@@ -59,39 +71,10 @@ despite scaling the design down, the printing time was still extremely long. so 
   </pre>
 
 <p>
-next, i used the computer in the lab, the turntable & camera, and revoscan & revostudio to try some photogrammetry. i found some 3d printed objects lying around in the lab and decided to try to scan them. here is an interesting white blob i found. 
+
 </p>
 
-<p>
-<img src="blob_irl.png" width="500" alt="white blob">
-</p>
-
-<p>
-this was my photogrammetric scan on revostudio. <a download href='blob.stl'>here</a> is the ply file for the blob. 
-</p>
-
-<p>
-<img src="blob.png" width="500" alt="scan of white blob">
-</p>
-
-
-<p>
-i also found a very expressive face of a blue cartoon character. 
-</p>
-
-<p>
-<img src="head_irl.png" width="500" alt="white blob">
-</p>
-
-<p>
-this was the photogrammetric scan of the partial action figure on revostudio. <a download href='head.stl'>here</a> is the ply file for the head. 
-</p>
-
-<p>
-<img src="head.png" width="500" alt="scan of white blob">
-</p>
-
-  </div>
+</div>
 
 </body>
 
