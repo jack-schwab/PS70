@@ -138,79 +138,52 @@ Instead of using an encoder to track the motor's rotations, I decided to make my
 
 <p>
 The hardware setup was quite simple: all I had to do was put the Hall effect in a fixed position and the magnet in a dynamic position.
+Or, I could've done vice versa, but the wiring of the Hall effect sensor would not have been conducive to moving around.
 I taped the Hall effect sensor to the body of the DC Motor and taped the magnet to the crank arm.
-That way, whenever 
+That way, whenever the crank will complete a rotation, the magnet will pass by the Hall effect sensor once.
 </p>
 
 <p>
-<img src="photoresistor_diagram.png" width="500">
+Unfortunately, I didn't take any pictures of this in action, but Week 9 displays the functionality.
 </p>
 
-<p>
-this is what it looked like when i wired it. 
-</p>
+      <div>
+      <pre class="code-snippet">
+// Define the pin for the Hall effect sensor
+const int hallPin = 14;   // GPIO pin connected to AH1815 output
+volatile int rotationCount = 0; // Variable to store the count of rotations
+unsigned long lastDebounceTime = 0; // Last time a pulse was counted
+const unsigned long debounceDelay = 200; // Minimum delay time in milliseconds between pulses
 
-<p>
-<img src="photoresistor_photo.png" width="500">
-</p>
+void setup() {
+  Serial.begin(115200);     // Initialize serial communication at 115200 baud for ESP32
+  pinMode(hallPin, INPUT);  // Set the hallPin as an input
+  attachInterrupt(digitalPinToInterrupt(hallPin), countRotation, FALLING); // Trigger on FALLING edge
+}
 
-<p>
-here is the code i used. the variable "light" shows how much light is being received by the photoresistor. 
-</p>
+void loop() {
+  // Display the rotation count
+  Serial.print("Rotations: ");
+  Serial.println(rotationCount);
+  delay(500); // Update every half second
+}
 
-<p>
-<img src="photoresistor_code.png" width="500">
-</p>
+// Interrupt Service Routine to count rotations
+void countRotation() {
+  unsigned long currentTime = millis(); // Current time in milliseconds
 
-<p>
-i wondered how accurate the photoresistor was. i turned off all the lights in the room. initially, i tried using the flashlight on my phone to test how sensitive the photoresistor was. but on my iphone, i could only turn my flashlight onto four levels of brightness. so, i was unable to see if the photoresistor could detect small changes in light and whether those changes mapped onto the "light" variable in a linear fashion. i downloaded an app on my phone that let me adjust the brightness of my flashlight more finely and tried again. this is the graph plotted using the serial plotter where i am changing the light from bright to dark and back repeatedly. 
-</p>
-
-<p>
-<img src="photoresistor_graph.png" width="500">
-</p>
-
-
-  <div>
-    <pre style="color:gray">
-# sensing light and controlling light
-    </pre>
-    <pre style="color:gray">
-# ---------------------------------
-  </pre>
-<p>
-i could imagine creating a simple tool that turns on lights when it's dark and turns them off when it's bright. i tried to create a simple non-trivial version of something like this by connecting an led to my light sensor. 
-</p>
-
-<p>
-<img src="led_diagram.png" width="500">
-</p>
-
-<p>
-here is the code i used. here, i am "mapping" the reading of the photoresistor onto a range from 0 to 10 because i realized that different photoresistors end up having vastly different readings. i am unsure why that happens. 
-</p>
-
-<p>
-<img src="led_code.png" width="500">
-</p>
-
-<p>
-here is a video of the led turning on and off depending on whether i am shining a flashlight on it or not. 
-</p>
-
-
-<p>
-<video width="500" controls>
-  <source src="led_video.mov">
-Your browser does not support the video tag.
-</video>
-
-</p>
-
+  // Check if the debounce time has passed
+  if ((currentTime - lastDebounceTime) > debounceDelay) {
+    rotationCount++; // Increment rotation count
+    lastDebounceTime = currentTime; // Update last debounce time
+  }
+}
+      </pre>
+      </div>
 
 
   </div>
-
+  </div>
 </body>
 
 <link rel="stylesheet" href="../../style.css">
