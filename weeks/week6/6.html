@@ -8,6 +8,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 
+<style>
+    pre.code-snippet {
+        font-family: 'Roboto Mono', monospace;
+        background-color: #1e1e1e;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    body {
+        background-color: #000000;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+    a {
+        color: lightblue;
+        text-decoration: underline;
+    }
+</style>
+
 <body bgcolor=#000000>
   
     <div>
@@ -32,30 +52,76 @@
   </pre>
 
 <p>
-For my capacitive sensor, I made a scale/pressure sensor/"high when it's together low when it's apart sensor."
+For my capacitive sensor, I made a scale/pressure sensor/"high when it's together low when it's apart" sensor.
 Allow me to explain.
 </p>
 
 <p>
-<img src="capacitive_photo.png" width="500">
-</p>
-
-
-<p>
-here is the code i used to sense the distance between the two copper plates. 
-</p>
-
-<p>
-<img src="capacitive_code.png" width="500">
+    <video width="500" height="500" controls>
+        <source src="capacitancevid1.MOV">
+        Your browser does not support the video tag.
+    </video>
 </p>
 
 <p>
-using the serial plotter, i was able to plot a graph of the distance between the two copper plates. although not perfect, i got the sense that it was a fairly accurate way of measuring distance. however, it only functioned for distances up to approximately 15 cm. here is the graph plotted using the serial plotter. 
+The code originally was to spit out some arbitrary value that will be high when the plates are near each other and low when they are apart, hence the "high when it's together, low when it's apart" sensor, as Bobby so eloquently coined.
+Then, Bobby informed be that putting a buffer (in this case a piece of cotton) in between the two plates, I would 1) get a much more consistent reading and 2) be able to call this something other than a "high when it's together, low when it's apart" sensor, such as a scale or pressure sensor.
 </p>
 
 <p>
-<img src="capacitive_graph.png" width="500">
+    <video width="500" height="500" controls>
+        <source src="capacitancevid2.MOV">
+        Your browser does not support the video tag.
+    </video>
+    <img src="capacitancepic.png" width="500" alt="sensor pic">
 </p>
+
+<p>
+The results on the serial plotter:
+</p>
+
+<p>
+<img src="capserialplot.png" width="500">
+</p>
+
+<p>
+The code:
+</p>
+
+<div>
+    <pre class="code-snippet">
+int tx_pin = 4;
+int rx_pin = A0;
+
+int read_high;
+int read_low;
+int read_result;
+
+int N_samples = 100;
+int sum;
+
+void setup() {
+  pinMode(tx_pin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  sum = 0;
+
+  for (int i=0; i < N_samples; i++) {
+    digitalWrite(tx_pin, HIGH);
+    read_high = analogRead(rx_pin);
+    digitalWrite(tx_pin, LOW);
+    read_low = analogRead(rx_pin);
+    read_result = read_high - read_low;
+    sum += read_result;
+  }
+
+  Serial.println(sum);
+}
+  </pre>
+</div>
+
 
 
   <div>
@@ -66,8 +132,14 @@ using the serial plotter, i was able to plot a graph of the distance between the
 # ---------------------------------
   </pre>
 <p>
-As part of my final project, I need to track the amount of rotations the motor crank completes.  Instead of using an encoder to track the motor's rotations, I decided to make my own rotation tracker with a Hall effect sensor, magnet, and a little bit of pixie dust.
+As part of my final project, I need to track the amount of rotations the motor crank completes.
+Instead of using an encoder to track the motor's rotations, I decided to make my own rotation tracker with a Hall effect sensor, magnet, and a little bit of pixie dust.
+</p>
 
+<p>
+The hardware setup was quite simple: all I had to do was put the Hall effect in a fixed position and the magnet in a dynamic position.
+I taped the Hall effect sensor to the body of the DC Motor and taped the magnet to the crank arm.
+That way, whenever 
 </p>
 
 <p>
